@@ -1,4 +1,5 @@
 ---
+
 - name: ansible-provisioning
   hosts: localhost
   connection: local
@@ -23,11 +24,11 @@
     register: result_vpc
   
   - name: Create subnet
-  ec2_vpc_subnet:
-    state: present
-    region: "{{ aws_region }}"
-    vpc_id: "{{ result_vpc.vpc.id }}"
-    cidr: "{{ subnet_cidr_block }}"
-    tags:
-      Name: Webserver Subnet
-  register: result_subnet
+    ec2_vpc_subnet:
+      state: present
+      region: "{{ aws_region }}"
+      vpc_id: "{{ result_vpc.vpc.id }}"
+      cidr: "{{ subnet_cidr_block }}"
+      tags:
+        Name: Webserver Subnet
+    register: result_subnet

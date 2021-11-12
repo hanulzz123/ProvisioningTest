@@ -11,7 +11,7 @@
     vpc_cidr_block: 10.211.0.0/16
     subnet_cidr_block: 10.211.1.0/24
     instance_image: ami-0a5a6128e65676ebb
-    ec2_key_name: jypark_devos
+    ec2_key_name: jypark-devos
     instance_type: t2.micro
   tasks:
   - name: create VPC

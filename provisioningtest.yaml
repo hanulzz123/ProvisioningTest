@@ -8,7 +8,7 @@
     vpc_name: ansible-vpc
     vpc_cidr_block: 10.210.0.0/16
     subnet_cidr_block: 10.210.1.0/24
-    instance_image: ami-06098fd00463352b6
+    instance_image: ami-0a5a6128e65676ebb
     ec2_key_name: jypark_devos
     instance_type: t2.micro
   tasks:
@@ -76,6 +76,20 @@
       group: allow-tcp
       count: 1
       region: "{{ aws_region }}"
+      vpc_subnet_id: "{{ result_subnet.subnet.id }}"
+      assign_public_ip: yes
+      instance_tags:
+        Name: webserver
+
+  - name: Create EC2
+    ec2:
+      key_name: "{{ ec2_key_name }}"
+      instance_type: "{{ instance_type }}"
+      image: "{{ instance_image }}"
+      region: "{{ aws_region }}"
+      wait: no
+      group: allow tcp
+      count: 1
       vpc_subnet_id: "{{ result_subnet.subnet.id }}"
       assign_public_ip: yes
       instance_tags:

@@ -2,7 +2,7 @@
 - name: ansible-provisioning
   hosts: localhost
   connection: local
-  gather-facts: false  
+  gather_facts: false  
   vars:
     aws_region: ap-northeast-2
     vpc_name: ansible-vpc
